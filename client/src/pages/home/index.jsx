@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   async function handleDeleteBlog(getCurrentId) {
-    const response = await axios.delete(`http://localhost5000/api/blogs/delete/${getCurrentId}`);
+    const response = await axios.delete(`http://localhost:5000/api/blogs/delete/${getCurrentId}`);
     const result = await response.data;
 
     if (result?.message) {
