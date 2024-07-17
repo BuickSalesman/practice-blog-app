@@ -6,7 +6,7 @@ const Blog = require("../model/Blog");
 //delete a blog
 //update a blog
 
-const fetchListOfblogs = async (req, res) => {
+const fetchListOfBlogs = async (req, res) => {
   let blogList;
   try {
     blogList = await Blog.find();
@@ -21,7 +21,7 @@ const fetchListOfblogs = async (req, res) => {
   return res.status(200).json({ blogList });
 };
 
-const addNewblog = async (req, res) => {
+const addNewBlog = async (req, res) => {
   const { title, description } = req.body;
   const currentDate = new Date();
 
@@ -76,14 +76,14 @@ const updateBlog = async (req, res) => {
   } catch (e) {
     console.log(e);
 
-    return res.send(500).json({ message: "Something went wrong! Please try again." });
+    return res.status(500).json({ message: "Something went wrong! Please try again." });
   }
 
   if (!currentBlogToUpdate) {
     return res.status(500).json({ message: "Unable to update." });
   }
 
-  return res.send(200).json({ currentBlogToUpdate });
+  return res.status(200).json({ currentBlogToUpdate });
 };
 
-module.exports = { fetchListOfblogs, deleteBlog, updateBlog, addNewblog };
+module.exports = { fetchListOfBlogs, deleteBlog, updateBlog, addNewBlog };
